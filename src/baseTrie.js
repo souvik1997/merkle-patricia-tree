@@ -647,7 +647,7 @@ module.exports = class Trie {
    * @return {stream.Readable} Returns a [stream](https://nodejs.org/dist/latest-v5.x/docs/api/stream.html#stream_class_stream_readable) of the contents of the `trie`
    */
   createReadStream () {
-    return new ReadStream(this)
+    return new ReadStream(this.copy())
   }
 
   // creates a new trie backed by the same db

@@ -1,0 +1,134 @@
+syntax = "proto3";
+package merklepatriciatree;
+
+
+message InitializeRequest {}
+message InitializeResult {
+  bytes root = 1;
+  int32 id = 2;
+}
+
+message GetRequest {
+  bytes root = 1;
+  bytes key = 2;
+  int32 id = 3;
+}
+
+message GetResult {
+  bool success = 1;
+  bytes value = 2;
+}
+
+message GetRawRequest {
+  bytes root = 1;
+  bytes key = 2;
+  int32 id = 3;
+}
+
+message GetRawResult {
+  bool success = 1;
+  bytes value = 2;
+}
+
+
+message PutRequest {
+  bytes root = 1;
+  bytes key = 2;
+  bytes value = 3;
+  int32 id = 4;
+}
+message PutResult {
+  bool success = 1;
+  bytes newRoot = 2;
+}
+
+message PutRawRequest {
+  bytes root = 1;
+  bytes key = 2;
+  bytes value = 3;
+  int32 id = 4;
+}
+message PutRawResult {
+  bool success = 1;
+}
+
+message DelRequest {
+  bytes root = 1;
+  bytes key = 2;
+  int32 id = 3;
+}
+message DelResult {
+  bool success = 1;
+  bytes newRoot = 2;
+}
+
+message CheckRootRequest {
+  bytes root = 1;
+  int32 id = 2;
+}
+message CheckRootResult {
+  bool success = 1;
+  bool validRoot = 2;
+}
+
+message GetRootRequest {
+  int32 id = 1;
+}
+message GetRootResult {
+  bytes root = 1;
+}
+
+message ReadStreamRequest {
+  bytes root = 1;
+  int32 id = 2;
+}
+message ReadStreamValue {
+  bytes value = 1;
+}
+
+message CopyRequest {
+  int32 id = 1;
+}
+
+message CopyResult {
+  int32 id = 2;
+}
+
+message InCheckpointRequest {
+  int32 id = 1;
+}
+message InCheckpointResult {
+  bool result = 1;
+}
+
+message CheckpointRequest {
+  int32 id = 1;
+}
+message CheckpointResult {}
+
+message CommitRequest {
+  int32 id = 1;
+}
+message CommitResult {}
+
+message RevertRequest {
+  int32 id = 1;
+}
+message RevertResult {}
+
+service MerklePatriciaTree {
+  rpc Initialize(InitializeRequest) returns (InitializeResult) {}
+  rpc Get(GetRequest) returns (GetResult) {}
+  rpc GetRaw(GetRawRequest) returns (GetRawResult) {}
+  rpc Put(PutRequest) returns (PutResult) {}
+  rpc PutRaw(PutRawRequest) returns (PutRawResult) {}
+  rpc Del(DelRequest) returns (DelResult) {}
+  rpc CheckRoot(CheckRootRequest) returns (CheckRootResult) {}
+  rpc ReadStream(ReadStreamRequest) returns (stream ReadStreamValue) {}
+  rpc GetRoot(GetRootRequest) returns (GetRootResult) {}
+  rpc Copy(CopyRequest) returns (CopyResult) {}
+  rpc InCheckpoint(InCheckpointRequest) returns (InCheckpointResult) {}
+  rpc Checkpoint(CheckpointRequest) returns (CheckpointResult) {}
+  rpc Commit(CommitRequest) returns (CommitResult) {}
+  rpc Revert(RevertRequest) returns (RevertResult) {}
+}

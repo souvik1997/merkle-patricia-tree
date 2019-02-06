@@ -32,10 +32,15 @@
     "trie",
     "ethereum"
   ],
+  "files": [
+    "src/**/*"
+  ],
   "license": "MPL-2.0",
   "dependencies": {
+    "@grpc/proto-loader": "^0.4.0",
     "async": "^2.6.1",
     "ethereumjs-util": "^5.2.0",
+    "grpc": "^1.18.0",
     "level-mem": "^3.0.1",
     "level-ws": "^1.0.0",
     "readable-stream": "^3.0.6",
@@ -60,7 +65,7 @@
     "karma-env-preprocessor": "^0.1.1",
     "karma-firefox-launcher": "^1.0.1",
     "karma-tap": "^1.0.3",
-    "standard": "^5.3.1",
+    "standard": "^12.0.1",
     "tape": "^4.4.0"
   },
   "standard": {

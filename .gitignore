@@ -13,3 +13,12 @@ secure.js
 scratchReadStream.js
 trieNode.js
 util.js
+db.js
+checkPointTrie.js
+scratch.js
+rpc/common.js
+rpc/server.js
+rpc/client.js
+util/async.js
+util/hex.js
+util/nibbles.js
